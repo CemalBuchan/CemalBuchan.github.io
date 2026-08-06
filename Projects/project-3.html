@@ -27,7 +27,8 @@
   .back:hover{ color:var(--orange); }
 
   .hero-banner{ padding-top:28px; }
-  .hero-banner img{ width:100%; height:240px; object-fit:cover; border-radius:10px; border:1px solid var(--line); display:block; }
+  .hero-banner .banner-frame{ width:100%; height:280px; background:var(--panel); border-radius:10px; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .hero-banner img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
 
   .hero{ padding:36px 0 50px; }
   .tag{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); letter-spacing:0.5px; margin-bottom:18px; display:block; }
@@ -75,7 +76,9 @@
 
 <section class="hero-banner">
   <div class="wrap">
+    <div class="banner-frame">
     <img src="media/platformer/screenshot-2.png" alt="2D Action Platformer cover image">
+    </div>
   </div>
 </section>
 
