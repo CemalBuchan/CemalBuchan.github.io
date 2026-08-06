@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gorilla Brawler — Cemal Buchan</title>
+<title>Gorilla vs 100 — Cemal Buchan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,13 +26,20 @@
   .back{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); transition:color .2s ease; }
   .back:hover{ color:var(--orange); }
 
-  .hero{ padding:80px 0 50px; }
+  .hero-banner{ padding-top:28px; }
+  .hero-banner img{ width:100%; height:240px; object-fit:cover; border-radius:10px; border:1px solid var(--line); display:block; }
+
+  .hero{ padding:36px 0 50px; }
   .tag{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); letter-spacing:0.5px; margin-bottom:18px; display:block; }
   h1{ font-family:var(--disp); font-weight:600; font-size:clamp(32px,5vw,46px); letter-spacing:-0.6px; margin-bottom:22px; color:var(--orange); }
   .lead{ color:var(--muted); font-size:16px; max-width:600px; }
 
-  .stack{ display:flex; gap:8px; flex-wrap:wrap; margin:26px 0 60px; }
+  .stack{ display:flex; gap:8px; flex-wrap:wrap; margin:26px 0 30px; }
   .chip{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--teal); background:var(--teal-bg); border:1px solid var(--teal); border-radius:20px; padding:5px 12px; }
+
+  .hero .btn{ font-family:var(--mono); font-size:12.5px; padding:12px 20px; border-radius:3px; display:inline-flex; align-items:center; gap:8px; transition:all .2s ease; border:1px solid var(--line); margin-bottom:60px; }
+  .hero .btn-primary{ background:var(--text); color:var(--bg); font-weight:600; border-color:var(--text); }
+  .hero .btn-primary:hover{ background:#3a352c; }
 
   section.block{ border-top:1px solid var(--line); padding:50px 0; }
   h2{ font-family:var(--disp); font-size:20px; font-weight:600; margin-bottom:22px; color:var(--orange); }
@@ -42,18 +49,19 @@
   .about p{ color:var(--muted); font-size:15px; margin-bottom:14px; max-width:640px; }
 
   .gallery-note{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); margin-bottom:20px; }
-  .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-  .gallery img{ width:100%; height:180px; object-fit:cover; border-radius:6px; border:1px solid var(--line); display:block; background:var(--panel); }
-  .gallery .add-slot{
-    height:180px; border:1px dashed var(--line); border-radius:6px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); text-align:center; padding:10px;
+  .gallery-scroll{
+    display:flex; gap:14px; overflow-x:auto; overflow-y:hidden;
+    padding-bottom:10px; cursor:grab; scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color:var(--line) transparent;
   }
+  .gallery-scroll.dragging{ cursor:grabbing; scroll-behavior:auto; }
+  .gallery-scroll::-webkit-scrollbar{ height:6px; }
+  .gallery-scroll::-webkit-scrollbar-track{ background:transparent; }
+  .gallery-scroll::-webkit-scrollbar-thumb{ background:var(--line); border-radius:3px; }
+  .gallery-item{ flex:0 0 auto; width:280px; height:190px; border-radius:6px; overflow:hidden; border:1px solid var(--line); background:var(--panel); }
+  .gallery-item img, .gallery-item video{ width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
 
   footer{ border-top:1px solid var(--line); padding:28px 0; font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); text-align:center; }
-  .foot-links{ padding:50px 0 10px; }
-  .foot-links a.btn{ font-family:var(--mono); font-size:12.5px; padding:12px 20px; border:1px solid var(--line); border-radius:3px; }
-  .foot-links a.btn:hover{ border-color:var(--muted); background:var(--panel); }
 </style>
 </head>
 <body>
@@ -61,65 +69,102 @@
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="../index.html">cemal<span>.buchan</span></a>
-    <a class="back" href="../index.html">← anasayfa</a>
+    <a class="back" href="../index.html">← home</a>
   </div>
 </header>
 
+<section class="hero-banner">
+  <div class="wrap">
+    <img src="media/gorilla/100M1G.png" alt="Gorilla vs 100 cover image">
+  </div>
+</section>
+
 <section class="hero">
   <div class="wrap">
-    <span class="tag">3D · Brawler · Unity / C#</span>
-    <h1>Gorilla Brawler</h1>
-    <p class="lead">Ağır vurgulu, fizik tabanlı yakın dövüş sistemine sahip 3D aksiyon oyunu. Oyuncunun her vuruşu hissetmesi için karakter kontrolü, saldırı zinciri ve düşman tepki sistemlerini baştan sona ben kurdum.</p>
+    <span class="tag">Arena Survival · Unity / C#</span>
+    <h1>Gorilla vs 100</h1>
+    <p class="lead">An arena survival prototype inspired by the viral "100 Humans vs 1 Gorilla" phenomenon. The player controls a single gorilla, fighting off endless waves of enemies while trying to survive as long as possible and achieve the highest score.</p>
     <div class="stack">
       <span class="chip">Unity</span>
       <span class="chip">C#</span>
-      <span class="chip">Combat System</span>
-      <span class="chip">Physics</span>
-      <span class="chip">Animation</span>
+      <span class="chip">Enemy AI</span>
+      <span class="chip">Procedural Generation</span>
     </div>
+    <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Play on itch.io ↗</a>
   </div>
 </section>
 
 <section class="block about">
   <div class="wrap">
-    <h2>Genel bakış</h2>
-    <p>Gorilla Brawler, oyuncunun ağırlık ve güç hissini merkeze alan bir yakın dövüş prototipi. Amaç, her saldırının fiziksel bir karşılığı olduğunu hissettirmekti — bu yüzden vuruş tepkileri, knockback ve saldırı zinciri tamamen bu hedefe göre tasarlandı.</p>
-    <p>Projede gameplay programmer olarak karakter kontrolcüsünden düşman tepki sistemine kadar tüm oynanış katmanını kendim geliştirdim.</p>
+    <h2>Overview</h2>
+    <p>Developed over roughly 1.5–2 months, this project was less a polished game and more a design and technical exploration prototype — I focused on unique combat mechanics, player feedback systems, dynamic AI behavior, and performance optimization.</p>
+    <p>Each wave spawns 50 enemies that relentlessly pursue the player — the meme's original 100 was scaled down to 50 for performance stability without sacrificing the pressure of an overwhelming crowd. To keep visual variety high, enemies are procedurally generated from random combinations of 4 character models, 2 material variations, and 3 walking animations, creating a lively battlefield with minimal asset overhead.</p>
   </div>
 </section>
 
 <section class="block">
   <div class="wrap">
-    <h2>Kurduğum sistemler</h2>
+    <h2>Gallery</h2>
+    <div class="gallery-note">Drag to scroll →</div>
+    <div class="gallery-scroll" id="gallery-scroll">
+      <div class="gallery-item"><img src="media/gorilla/screenshot-1.png" alt="Gorilla vs 100 screenshot 1"></div>
+      <div class="gallery-item"><img src="media/gorilla/screenshot-2.png" alt="Gorilla vs 100 screenshot 2"></div>
+      <div class="gallery-item"><video src="media/gorilla/g1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g2.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g3.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g4.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g5.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g6.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g7.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g8.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><video src="media/gorilla/g9.mp4" autoplay muted loop playsinline></video></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Systems I built</h2>
     <ul class="feat">
-      <li><b>Saldırı Zinciri (Combo System)</b> — art arda gelen saldırıları zamanlamaya göre birbirine bağlayan zincir sistemi.</li>
-      <li><b>Düşman Tepki Sistemi</b> — alınan hasara göre knockback, sersemleme ve tepki animasyonu seçimi.</li>
-      <li><b>Fizik Tabanlı Vuruş Geri Bildirimi</b> — vuruş anında kamera sarsıntısı ve rigidbody tabanlı itme.</li>
-      <li><b>Karakter Kontrolcüsü</b> — ağırlık hissi veren hareket ve saldırı geçiş sistemi.</li>
+      <li><b>Sensory Organ System</b> — instead of a traditional health bar, the gorilla has four independent sensory organs (both eyes, nose, ears); destroying each one triggers a real gameplay effect — half the screen going dark, enemies no longer staying constantly visible, the special-attack warning glow disappearing, and so on.</li>
+      <li><b>Enemy AI</b> — enemies can dodge poorly-timed attacks, and some perform a three-phase special attack (pause → charge → leap); this attack can be countered with a well-timed block, otherwise it damages a specific sensory organ.</li>
+      <li><b>Procedural Enemy Variation</b> — a variation system that randomly combines models, materials, and animations to keep 50+ enemies on screen at once without a performance hit.</li>
+      <li><b>Player Abilities &amp; Crowd Control</b> — movement, sprint, melee attack, block, and a middle-click special ability with area damage; enemies launched into the air collide with those behind them, creating chain damage.</li>
+      <li><b>Visual Feedback System</b> — color-coded cues (yellow glow for an incoming special attack, red glow for attacking/damage, white glow for temporary visibility after losing both eyes) that communicate instantly without relying on UI.</li>
+      <li><b>Performance Optimization</b> — optimization work to keep 50+ active enemies running smoothly on screen at the same time.</li>
     </ul>
   </div>
 </section>
 
 <section class="block">
   <div class="wrap">
-    <h2>Bu projeden kazandıklarım</h2>
-    <p style="color:var(--muted); font-size:15px; max-width:640px;">[Buraya bu projede neler öğrendiğini, hangi zorlukları aştığını ve sana ne kazandırdığını yaz — teknik öğrenimler, karşılaştığın problemler ve çözüm yaklaşımın gibi.]</p>
+    <h2>What I took away from this project</h2>
+    <p style="color:var(--muted); font-size:15px; max-width:640px;">This was one of the projects that pushed my growth the most in performance optimization, AI behavior design, animation event systems, and sound design. Keeping 50+ enemies on screen at once forced me into serious performance optimization; designing AI behaviors like dodging and special attacks deepened my understanding of AI; I learned to precisely sync attack timing (windup, hit, damage) through animation events; and layering all of these systems with sound taught me the value of giving the player clear, instant feedback.</p>
   </div>
 </section>
 
-<section class="block">
-  <div class="wrap">
-    <h2>Görseller</h2>
-    <div class="gallery-note">Şimdilik rastgele placeholder görseller — kendi ekran görüntülerinle / gif'lerinle değiştir.</div>
-    <div class="gallery">
-      <img src="https://picsum.photos/seed/gorilla1/800/500" alt="Gorilla Brawler görsel yer tutucu 1">
-      <img src="https://picsum.photos/seed/gorilla2/800/500" alt="Gorilla Brawler görsel yer tutucu 2">
-      <div class="add-slot">+ kendi görselini<br>buraya ekle</div>
-    </div>
-  </div>
-</section>
+<footer>© 2026 Cemal Buchan — Helsinki, Finland</footer>
 
-<footer>© 2026 Cemal Buchan — Helsinki, Finlandiya</footer>
+<script>
+(function(){
+  var el = document.getElementById('gallery-scroll');
+  if(!el) return;
+  var isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', function(e){
+    isDown = true; el.classList.add('dragging');
+    startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+  });
+  window.addEventListener('mouseup', function(){ isDown = false; el.classList.remove('dragging'); });
+  el.addEventListener('mouseleave', function(){ isDown = false; el.classList.remove('dragging'); });
+  el.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - el.offsetLeft;
+    var walk = (x - startX) * 1.2;
+    el.scrollLeft = scrollLeft - walk;
+  });
+})();
+</script>
 
 </body>
 </html>
