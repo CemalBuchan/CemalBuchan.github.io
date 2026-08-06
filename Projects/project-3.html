@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MABW — Cemal Buchan</title>
+<title>2D Action Platformer — Cemal Buchan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -75,30 +75,30 @@
 
 <section class="hero-banner">
   <div class="wrap">
-    <img src="media/knight/Knight.png" alt="MABW cover image">
+    <img src="media/platformer/screenshot-2.png" alt="2D Action Platformer cover image">
   </div>
 </section>
 
 <section class="hero">
   <div class="wrap">
-    <span class="tag">Directional Combat Prototype · Unity / C#</span>
-    <h1>MABW</h1>
-    <p class="lead">A combat prototype that departs from traditional fighting games, built around reading enemy attacks in real time and reacting to them. Characters don't die — the goal is to gain the advantage by stunning your opponent through correct direction selection and perfect timing.</p>
+    <span class="tag">2D Platformer · 2-Person Team · Unity / C#</span>
+    <h1>2D Action Platformer</h1>
+    <p class="lead">A fast-paced 2D platformer with 3 complete levels, built with a 2-person team under a tight deadline. The player progresses by evading or neutralizing enemies, collecting coins, and reaching each level's goal, with difficulty ramping up as they go.</p>
     <div class="stack">
       <span class="chip">Unity</span>
       <span class="chip">C#</span>
-      <span class="chip">State Machine</span>
-      <span class="chip">AI Behavior</span>
+      <span class="chip">Enemy AI</span>
+      <span class="chip">UI/UX</span>
     </div>
-    <a class="btn btn-primary" href="https://cmalbcn.itch.io/mabw" target="_blank" rel="noopener">Play on itch.io ↗</a>
+    <a class="btn btn-primary" href="https://play.unity.com/en/user/2ee976dd-0037-43b9-b037-631f11cb503c" target="_blank" rel="noopener">Play on Unity Play ↗</a>
   </div>
 </section>
 
 <section class="block about">
   <div class="wrap">
     <h2>Overview</h2>
-    <p>MABW is an attempt to build a reflex-driven combat system that rewards observation and timing over trading damage. The enemy telegraphs its attack by randomly committing to a direction and winding up; the player's job is to read that tell and react in time.</p>
-    <p>Reading the correct direction at the right moment stuns the opponent and opens a punish window; a wrong or late reaction leaves the player exposed instead. The result is a fast, reflex-driven combat loop that rewards observation and timing over raw mechanical execution.</p>
+    <p>Built with a 2-person team under a tight deadline, this project aimed for an optimized code structure and modular system design that ensured all 3 levels shipped fully playable and complete.</p>
+    <p>Beyond the gameplay systems, real attention went into UI/UX as well — from in-game HUD elements to menu flow and visual polish. Despite the short development window, the goal was for the game to feel complete and cohesive rather than merely functional.</p>
   </div>
 </section>
 
@@ -107,9 +107,8 @@
     <h2>Gallery</h2>
     <div class="gallery-note">Drag to scroll →</div>
     <div class="gallery-scroll" id="gallery-scroll">
-      <div class="gallery-item"><img src="media/knight/Knight.png" alt="MABW cover image"></div>
-      <div class="gallery-item"><img src="media/knight/screenshot-1.png" alt="MABW screenshot 1"></div>
-      <div class="gallery-item"><video src="media/knight/g1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><img src="media/platformer/screenshot-1.png" alt="2D Action Platformer screenshot 1"></div>
+      <div class="gallery-item"><img src="media/platformer/screenshot-2.png" alt="2D Action Platformer screenshot 2"></div>
     </div>
   </div>
 </section>
@@ -118,12 +117,13 @@
   <div class="wrap">
     <h2>Systems I built</h2>
     <ul class="feat">
-      <li><b>Attack-Mode State Machine</b> — holding Ctrl enters Attack Mode; while active, right-click selects the attack direction and left-click executes the attack.</li>
-      <li><b>Direction-Based Input System</b> — input logic that compares the player's chosen direction against the enemy's to determine the stun/damage outcome.</li>
-      <li><b>Stun System (Core Mechanic)</b> — if the enemy attacks from the direction the player selected, the enemy is stunned; if the player attacks from the direction the enemy selected, the player is stunned instead.</li>
-      <li><b>Damage Resolution Logic</b> — attacking from a direction the enemy didn't select deals damage; attacking from the enemy's selected direction still deals damage if the enemy is already stunned — requiring the player to evaluate the enemy's stun state, not just the direction.</li>
-      <li><b>Enemy-Player Interaction Logic</b> — the enemy's behavior of randomly committing to a direction and winding up gives the player a readable tell.</li>
-      <li><b>Sprint &amp; Movement System</b> — a basic movement system with Shift-triggered sprint for increased speed.</li>
+      <li><b>Core Game Mechanics &amp; Code Infrastructure</b> — all of the project's gameplay systems and code architecture, built from the ground up.</li>
+      <li><b>Enemy AI</b> — the enemy behavior system driving the player's choice to evade or engage.</li>
+      <li><b>Coin &amp; Scoring System</b> — coin collection and scoring logic.</li>
+      <li><b>Level Transition System</b> — the transition logic managing the flow between levels.</li>
+      <li><b>Animation Integration &amp; Scene Composition</b> — integrating character/enemy animations and arranging the visual scenes.</li>
+      <li><b>UI/UX Implementation</b> — interface systems from HUD elements to menu flow that make the game feel cohesive.</li>
+      <li><b>Modular Code Structure</b> — a reusable architecture that let levels, enemies, and systems be iterated on quickly under a tight deadline without breaking existing work.</li>
     </ul>
   </div>
 </section>
@@ -131,7 +131,7 @@
 <section class="block">
   <div class="wrap">
     <h2>What I took away from this project</h2>
-    <p style="color:var(--muted); font-size:15px; max-width:640px;">This project taught me a lot about state machine design, synchronizing input-driven systems, and the timing precision reflex-based gameplay demands. Building the Attack Mode transitions and direction-comparison logic end-to-end gave me a much stronger grasp of state management. Designing the enemy's pre-attack "tell" taught me that AI needs to feel both readable and fair — signal too early and it becomes predictable, too late and it feels unfair, and I had to find that fine timing balance. Coding the stun/damage resolution logic also showed me that a rule that looks simple on paper (right direction vs. wrong direction) actually has to evaluate multiple states at once (direction, timing, stun status) — an experience that sharpened my sense for reactive system design.</p>
+    <p style="color:var(--muted); font-size:15px; max-width:640px;">This project taught me a lot about time management and prioritization, team collaboration and task distribution, and rapid prototyping and iteration. Working with a 2-person team under a tight deadline meant making clear calls about which systems needed to be finished first and dividing tasks effectively. Building a modular, reusable code structure let me iterate quickly without breaking existing systems, an experience that helped me internalize a rapid-prototyping mindset.</p>
   </div>
 </section>
 
