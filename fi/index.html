@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cemal Buchan — Gameplay Programmer</title>
+<title>Cemal Buchan — Gameplay-ohjelmoija</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -108,32 +108,10 @@
   .proj-stack{ display:flex; gap:8px; flex-wrap:wrap; justify-self:end; }
   .chip{ font-family:var(--mono); font-size:10.5px; font-weight:700; color:var(--teal); background:var(--teal-bg); border:1px solid var(--teal); border-radius:20px; padding:4px 10px; white-space:nowrap; }
 
-  .systems{ border-top:1px solid var(--line); }
-  .log-list{ font-family:var(--mono); font-size:13.5px; }
-  .log-row{ display:grid; grid-template-columns: 1fr auto auto; gap:12px; padding:18px 0; border-bottom:1px solid var(--line); align-items:center; }
-  .log-row .msg b{ color:var(--text); font-weight:500; }
-  .log-row .msg{ color:var(--muted); }
-  .game-tag{ font-size:10.5px; padding:4px 11px; border-radius:20px; white-space:nowrap; font-weight:600; }
-  .game-blue{ color:var(--blue); background:var(--blue-bg); }
-  .game-purple{ color:var(--purple); background:var(--purple-bg); }
-  .game-orange{ color:var(--orange); background:var(--orange-bg); }
-  .lvl{ font-size:10.5px; padding:4px 11px; border-radius:20px; height:fit-content; color:var(--muted); border:1px solid var(--line); white-space:nowrap; background:var(--panel); }
-
-  .courses{ border-top:1px solid var(--line); }
-  .course-list{ font-family:var(--mono); font-size:13.5px; }
-  .course-row{ display:grid; grid-template-columns: 1fr auto; gap:18px; padding:18px 0; border-bottom:1px solid var(--line); align-items:baseline; }
-  .course-row .msg b{ color:var(--text); font-weight:500; }
-  .course-row .msg{ color:var(--muted); }
-  .course-row .date{ font-size:11.5px; color:var(--muted-dim); white-space:nowrap; }
-
   .about{ border-top:1px solid var(--line); }
   .about-grid{ display:grid; grid-template-columns: 1fr; gap:60px; max-width:640px; }
   .about p{ color:var(--muted); margin-bottom:16px; font-size:15px; }
   .about strong{ color:var(--text); font-weight:500; }
-  .stat-block{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); }
-  .stat{ background:var(--bg); padding:24px; }
-  .stat .num{ font-family:var(--disp); font-size:28px; color:var(--text); font-weight:700; }
-  .stat .label{ font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:6px; }
 
   .contact{ border-top:1px solid var(--line); text-align:center; padding-bottom:70px; }
   .contact .sec-head{ justify-content:center; }
@@ -147,8 +125,6 @@
     .proj-row{ grid-template-columns:1fr; }
     .proj-thumb{ width:100%; height:180px; }
     .proj-stack{ justify-self:start; }
-    .log-row{ grid-template-columns:1fr; gap:8px; }
-    .course-row{ grid-template-columns:1fr; gap:6px; }
     nav.links{ display:none; }
   }
   @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; } }
@@ -162,12 +138,12 @@
     <a class="logo" href="index.html">cemal<span>.buchan</span></a>
     <div class="nav-right">
       <nav class="links">
-        <a href="#projects">projects</a>
-        <a href="#about">about</a>
-        <a href="#contact">contact</a>
+        <a href="#projects">projektit</a>
+        <a href="#about">tietoa</a>
+        <a href="#contact">yhteystiedot</a>
       </nav>
       <div class="lang-switch">
-        <a href="index.html" class="active">EN</a><span>/</span><a href="fi/index.html">FI</a>
+        <a href="../index.html">EN</a><span>/</span><a href="index.html" class="active">FI</a>
       </div>
     </div>
   </div>
@@ -175,11 +151,11 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1>A gameplay programmer turning ideas into <em>playable</em> mechanics.</h1>
-    <p class="lead">Third-year Game Development student at Business College Helsinki. My focus is gameplay programming, but I'm comfortable working across nearly every area of game development.</p>
+    <h1>Gameplay-ohjelmoija, joka muuttaa ideat <em>pelattaviksi</em> mekaniikoiksi.</h1>
+    <p class="lead">Kolmannen vuoden pelinkehityksen opiskelija Business College Helsingissä. Pääpainoni on gameplay-ohjelmoinnissa, mutta pystyn työskentelemään lähes kaikilla pelinkehityksen osa-alueilla.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects">View projects</a>
-      <a class="btn btn-ghost" href="Cemal_Buchan_CV.docx" download>Download CV ↓</a>
+      <a class="btn btn-primary" href="#projects">Katso projektit</a>
+      <a class="btn btn-ghost" href="../Cemal_Buchan_CV.docx" download>Lataa CV ↓</a>
       <a class="btn btn-ghost" href="https://github.com/CemalBuchan" target="_blank" rel="noopener">GitHub ↗</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/cemal-buchan-1472063b7/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
@@ -188,29 +164,29 @@
 
 <section class="projects" id="projects">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Projects</span></div>
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Projektit</span></div>
     <div class="proj-list">
       <a class="proj-row" href="Projects/gorilla-brawler.html">
-        <div class="proj-thumb"><img src="Projects/media/gorilla/100M1G.png" alt="Gorilla vs 100 cover image"></div>
+        <div class="proj-thumb"><img src="../Projects/media/gorilla/100M1G.png" alt="Gorilla vs 100 -kansikuva"></div>
         <div>
           <h3>Gorilla vs 100 <span class="arrow">→</span></h3>
-          <p>An arena survival prototype inspired by the viral "100 Humans vs 1 Gorilla" phenomenon. The sensory-organ damage system, enemy AI, and procedural enemy variation are all built from scratch by me.</p>
+          <p>Areenaselviytymisprototyyppi, jonka innoittajana toimi viraali "100 ihmistä vastaan 1 gorilla" -ilmiö. Aistielinten vauriojärjestelmän, vihollisten tekoälyn ja proseduraalisen vihollisvaihtelun olen rakentanut alusta asti itse.</p>
         </div>
         <div class="proj-stack"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Enemy AI</span></div>
       </a>
       <a class="proj-row" href="Projects/knight-action-game.html">
-        <div class="proj-thumb"><img src="Projects/media/knight/Knight.png" alt="MABW cover image"></div>
+        <div class="proj-thumb"><img src="../Projects/media/knight/Knight.png" alt="MABW-kansikuva"></div>
         <div>
           <h3>MABW <span class="arrow">→</span></h3>
-          <p>A combat prototype built around direction-reading, reflexes, and timing. The attack-mode state machine, direction-based stun system, and enemy AI behavior are all built from scratch by me.</p>
+          <p>Taisteluprototyyppi, joka rakentuu suunnanluvun, refleksien ja ajoituksen varaan. Hyökkäystilan tila-automaatin, suuntaperusteisen tainnutusjärjestelmän ja vihollisen tekoälyn käytöksen olen rakentanut alusta asti itse.</p>
         </div>
         <div class="proj-stack"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">State Machine</span></div>
       </a>
       <a class="proj-row" href="Projects/project-3.html">
-        <div class="proj-thumb"><img src="Projects/media/platformer/screenshot-1.png" alt="2D Action Platformer cover image"></div>
+        <div class="proj-thumb"><img src="../Projects/media/platformer/screenshot-1.png" alt="2D Action Platformer -kansikuva"></div>
         <div>
           <h3>2D Action Platformer <span class="arrow">→</span></h3>
-          <p>A fast-paced 2D platformer with 3 levels, built with a 2-person team under a tight deadline. All game mechanics, enemy AI, and UI/UX are built from scratch by me.</p>
+          <p>Nopeatempoinen 2D-tasohyppely, jossa on 3 tasoa, tehty kahden hengen tiimillä tiukalla aikataululla. Kaikki pelimekaniikat, vihollisten tekoäly ja käyttöliittymä olen rakentanut alusta asti itse.</p>
         </div>
         <div class="proj-stack"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">2D</span></div>
       </a>
@@ -221,26 +197,26 @@
 <section class="about" id="about">
   <div class="wrap about-grid">
     <div>
-      <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">About</span></div>
-      <p>I'm a third-year Game Development student at <strong>Business College Helsinki</strong>, with 4+ years of hands-on Unity and C# experience. My focus is gameplay programming — gameplay systems, post-processing, animation, and event-driven architecture — but I'm comfortable across the wider development pipeline, including engine-less development in pure C# and Raylib. I'm a <strong>Taitaja 2026 Finalist</strong> in the Game Development category, Finland's largest vocational skills competition.</p>
-      <p>I hold a gold-level certificate (30 ECTS) from XAMK Open University's Introduction to Video Games Creation program, along with two additional Unity/C# courses covering TPS development and game programming fundamentals. Alongside my studies, I've spent 3 years working at a volunteer association, taking part in weekly group discussions and developing strong active listening, facilitation, and collaborative problem-solving skills.</p>
-      <p>I'm a native Turkish speaker, comfortable in English (B2), and currently building my Finnish (A2). Beyond Unity &amp; C#, I've also worked with Raylib, Python, HTML, and CSS.</p>
+      <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Tietoa minusta</span></div>
+      <p>Olen kolmannen vuoden pelinkehityksen opiskelija <strong>Business College Helsingissä</strong>, ja minulla on yli 4 vuoden käytännön kokemus Unitystä ja C#:sta. Painopisteeni on gameplay-ohjelmoinnissa — pelimekaniikat, jälkikäsittely, animaatio ja tapahtumapohjainen arkkitehtuuri — mutta pystyn työskentelemään myös laajemmin kehitysputkessa, mukaan lukien moottoriton kehitys puhtaalla C#:lla ja Raylibillä. Olen <strong>Taitaja 2026 -finalisti</strong> pelinkehityksen sarjassa, joka on Suomen suurin ammattitaitokilpailu.</p>
+      <p>Minulla on kultatason todistus (30 op) XAMK:n avoimen yliopiston Johdatus videopelien luomiseen -ohjelmasta, sekä kaksi muuta Unity/C#-kurssia, jotka kattoivat TPS-kehityksen ja pelinohjelmoinnin perusteet. Opintojeni ohella olen työskennellyt 3 vuotta vapaaehtoisyhdistyksessä, osallistuen viikoittaisiin ryhmäkeskusteluihin ja kehittäen vahvaa aktiivista kuuntelua, fasilitointia ja yhteistyöhön perustuvaa ongelmanratkaisua.</p>
+      <p>Äidinkieleni on turkki, osaan englantia sujuvasti (B2) ja opettelen parhaillaan suomea (A2). Unityn ja C#:n lisäksi olen työskennellyt myös Raylibin, Pythonin, HTML:n ja CSS:n kanssa.</p>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Let's talk</span></div>
-    <p>Feel free to reach out for projects, collaboration, or any questions — you can message me on LinkedIn for more details.</p>
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Otetaan yhteyttä</span></div>
+    <p>Ota rohkeasti yhteyttä projektien, yhteistyön tai kysymysten tiimoilta — lisätietoja saat viestimällä minulle LinkedInissä.</p>
     <div class="contact-links">
-      <a class="btn btn-primary" href="mailto:cemalbuchan@icloud.com">Send email</a>
+      <a class="btn btn-primary" href="mailto:cemalbuchan@icloud.com">Lähetä sähköpostia</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/cemal-buchan-1472063b7/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </div>
 </section>
 
-<footer>© 2026 Cemal Buchan — Helsinki, Finland</footer>
+<footer>© 2026 Cemal Buchan — Helsinki, Suomi</footer>
 
 </body>
 </html>

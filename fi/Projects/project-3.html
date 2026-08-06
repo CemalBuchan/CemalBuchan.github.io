@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MABW — Cemal Buchan</title>
+<title>2D Action Platformer — Cemal Buchan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -75,11 +75,11 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="../index.html">cemal<span>.buchan</span></a>
+    <a class="logo" href="../../index.html">cemal<span>.buchan</span></a>
     <div class="nav-right">
-      <a class="back" href="../index.html">← home</a>
+      <a class="back" href="../../index.html">← etusivulle</a>
       <div class="lang-switch">
-        <a href="knight-action-game.html" class="active">EN</a><span>/</span><a href="../fi/Projects/knight-action-game.html">FI</a>
+        <a href="../../Projects/project-3.html">EN</a><span>/</span><a href="project-3.html" class="active">FI</a>
       </div>
     </div>
   </div>
@@ -88,68 +88,68 @@
 <section class="hero-banner">
   <div class="wrap">
     <div class="banner-frame">
-    <img src="media/knight/Knight.png" alt="MABW cover image">
+    <img src="../../Projects/media/platformer/screenshot-2.png" alt="2D Action Platformer -kansikuva">
     </div>
   </div>
 </section>
 
 <section class="hero">
   <div class="wrap">
-    <span class="tag">Directional Combat Prototype · Unity / C#</span>
-    <h1>MABW</h1>
-    <p class="lead">A combat prototype that departs from traditional fighting games, built around reading enemy attacks in real time and reacting to them. Characters don't die — the goal is to gain the advantage by stunning your opponent through correct direction selection and perfect timing.</p>
+    <span class="tag">2D-tasohyppely · 2 hengen tiimi · Unity / C#</span>
+    <h1>2D Action Platformer</h1>
+    <p class="lead">Nopeatempoinen 2D-tasohyppely, jossa on 3 valmista tasoa, tehty kahden hengen tiimillä tiukalla aikataululla. Pelaaja etenee väistämällä tai eliminoimalla vihollisia, keräämällä kolikoita ja saavuttamalla kunkin tason maalin, vaikeustason kasvaessa matkan varrella.</p>
     <div class="stack">
       <span class="chip">Unity</span>
       <span class="chip">C#</span>
-      <span class="chip">State Machine</span>
-      <span class="chip">AI Behavior</span>
+      <span class="chip">Enemy AI</span>
+      <span class="chip">UI/UX</span>
     </div>
-    <a class="btn btn-primary" href="https://cmalbcn.itch.io/mabw" target="_blank" rel="noopener">Play on itch.io ↗</a>
+    <a class="btn btn-primary" href="https://play.unity.com/en/user/2ee976dd-0037-43b9-b037-631f11cb503c" target="_blank" rel="noopener">Pelaa Unity Playssa ↗</a>
   </div>
 </section>
 
 <section class="block about">
   <div class="wrap">
-    <h2>Overview</h2>
-    <p>MABW is an attempt to build a reflex-driven combat system that rewards observation and timing over trading damage. The enemy telegraphs its attack by randomly committing to a direction and winding up; the player's job is to read that tell and react in time.</p>
-    <p>Reading the correct direction at the right moment stuns the opponent and opens a punish window; a wrong or late reaction leaves the player exposed instead. The result is a fast, reflex-driven combat loop that rewards observation and timing over raw mechanical execution.</p>
+    <h2>Yleiskatsaus</h2>
+    <p>Kahden hengen tiimillä tiukalla aikataululla tehty projekti tähtäsi optimoituun koodirakenteeseen ja modulaariseen järjestelmäsuunnitteluun, joka varmisti kaikkien 3 tason valmistumisen täysin pelattavina ja viimeisteltyinä.</p>
+    <p>Pelimekaniikkojen lisäksi todellista huomiota kiinnitettiin myös käyttöliittymään ja käyttökokemukseen — pelin sisäisistä HUD-elementeistä valikkorakenteeseen ja visuaaliseen viimeistelyyn. Lyhyestä kehitysajasta huolimatta tavoitteena oli, että peli tuntuisi valmiilta ja yhtenäiseltä, ei vain toimivalta.</p>
   </div>
 </section>
 
 <section class="block">
   <div class="wrap">
-    <h2>Gallery</h2>
-    <div class="gallery-note">Drag to scroll →</div>
+    <h2>Galleria</h2>
+    <div class="gallery-note">Vieritä raahaamalla →</div>
     <div class="gallery-scroll" id="gallery-scroll">
-      <div class="gallery-item"><img src="media/knight/Knight.png" alt="MABW cover image"></div>
-      <div class="gallery-item"><img src="media/knight/screenshot-1.png" alt="MABW screenshot 1"></div>
-      <div class="gallery-item"><video src="media/knight/g1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="gallery-item"><img src="../../Projects/media/platformer/screenshot-1.png" alt="2D Action Platformer kuvakaappaus 1"></div>
+      <div class="gallery-item"><img src="../../Projects/media/platformer/screenshot-2.png" alt="2D Action Platformer kuvakaappaus 2"></div>
     </div>
   </div>
 </section>
 
 <section class="block">
   <div class="wrap">
-    <h2>Systems I built</h2>
+    <h2>Rakentamani järjestelmät</h2>
     <ul class="feat">
-      <li><b>Attack-Mode State Machine</b> — holding Ctrl enters Attack Mode; while active, right-click selects the attack direction and left-click executes the attack.</li>
-      <li><b>Direction-Based Input System</b> — input logic that compares the player's chosen direction against the enemy's to determine the stun/damage outcome.</li>
-      <li><b>Stun System (Core Mechanic)</b> — if the enemy attacks from the direction the player selected, the enemy is stunned; if the player attacks from the direction the enemy selected, the player is stunned instead.</li>
-      <li><b>Damage Resolution Logic</b> — attacking from a direction the enemy didn't select deals damage; attacking from the enemy's selected direction still deals damage if the enemy is already stunned — requiring the player to evaluate the enemy's stun state, not just the direction.</li>
-      <li><b>Enemy-Player Interaction Logic</b> — the enemy's behavior of randomly committing to a direction and winding up gives the player a readable tell.</li>
-      <li><b>Sprint &amp; Movement System</b> — a basic movement system with Shift-triggered sprint for increased speed.</li>
+      <li><b>Peruspelimekaniikat ja koodi-infrastruktuuri</b> — kaikki projektin pelimekaniikat ja koodiarkkitehtuuri, rakennettu alusta asti.</li>
+      <li><b>Vihollisten tekoäly</b> — vihollisten käytösjärjestelmä, joka ohjaa pelaajan valintaa väistää tai kohdata.</li>
+      <li><b>Kolikko- ja pistejärjestelmä</b> — kolikoiden keräys- ja pisteytyslogiikka.</li>
+      <li><b>Tasosiirtymäjärjestelmä</b> — siirtymälogiikka, joka hallitsee tasojen välistä kulkua.</li>
+      <li><b>Animaatiointegraatio ja kohtausten kokoonpano</b> — hahmojen/vihollisten animaatioiden integrointi ja visuaalisten kohtausten järjestely.</li>
+      <li><b>Käyttöliittymän toteutus</b> — järjestelmät HUD-elementeistä valikkorakenteeseen, jotka saavat pelin tuntumaan yhtenäiseltä.</li>
+      <li><b>Modulaarinen koodirakenne</b> — uudelleenkäytettävä arkkitehtuuri, joka mahdollisti tasojen, vihollisten ja järjestelmien nopean iteroinnin tiukalla aikataululla rikkomatta olemassa olevaa työtä.</li>
     </ul>
   </div>
 </section>
 
 <section class="block">
   <div class="wrap">
-    <h2>What I took away from this project</h2>
-    <p style="color:var(--muted); font-size:15px; max-width:640px;">This project taught me a lot about state machine design, synchronizing input-driven systems, and the timing precision reflex-based gameplay demands. Building the Attack Mode transitions and direction-comparison logic end-to-end gave me a much stronger grasp of state management. Designing the enemy's pre-attack "tell" taught me that AI needs to feel both readable and fair — signal too early and it becomes predictable, too late and it feels unfair, and I had to find that fine timing balance. Coding the stun/damage resolution logic also showed me that a rule that looks simple on paper (right direction vs. wrong direction) actually has to evaluate multiple states at once (direction, timing, stun status) — an experience that sharpened my sense for reactive system design.</p>
+    <h2>Mitä opin tästä projektista</h2>
+    <p style="color:var(--muted); font-size:15px; max-width:640px;">Tämä projekti opetti minulle paljon ajanhallinnasta ja priorisoinnista, tiimityöstä ja tehtävienjaosta sekä nopeasta prototyyppauksesta ja iteroinnista. Työskentely kahden hengen tiimissä tiukalla aikataululla tarkoitti selkeiden päätösten tekemistä siitä, mitkä järjestelmät piti saada valmiiksi ensin, ja tehtävien jakamista tehokkaasti. Modulaarisen, uudelleenkäytettävän koodirakenteen rakentaminen antoi minulle mahdollisuuden iteroida nopeasti rikkomatta olemassa olevia järjestelmiä — kokemus, joka auttoi minua sisäistämään nopean prototyyppauksen ajattelutavan.</p>
   </div>
 </section>
 
-<footer>© 2026 Cemal Buchan — Helsinki, Finland</footer>
+<footer>© 2026 Cemal Buchan — Helsinki, Suomi</footer>
 
 <script>
 (function(){
