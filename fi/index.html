@@ -80,6 +80,7 @@
   .hero{ position:relative; z-index:1; padding:130px 0 100px; }
   .hero h1{ font-family:var(--disp); font-weight:600; font-size:clamp(36px, 5.2vw, 58px); line-height:1.08; letter-spacing:-0.8px; max-width:780px; margin-bottom:26px; color:var(--orange); }
   .hero h1 em{ font-style:normal; color:var(--muted); }
+  .hero h1 .hero-sub{ color:var(--teal); }
   .hero p.lead{ color:var(--muted); font-size:17px; max-width:560px; margin-bottom:38px; }
 
   .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; }
@@ -151,7 +152,7 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1>Gameplay-ohjelmoija, joka muuttaa ideat <em>pelattaviksi</em> mekaniikoiksi.</h1>
+    <h1>Cemal Buchan <span class="hero-sub">— Pelinkehittäjä</span></h1>
     <p class="lead">Kolmannen vuoden pelinkehityksen opiskelija Business College Helsingissä. Pääpainoni on gameplay-ohjelmoinnissa, mutta pystyn työskentelemään lähes kaikilla pelinkehityksen osa-alueilla.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#projects">Katso projektit</a>
@@ -210,13 +211,30 @@
     <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Otetaan yhteyttä</span></div>
     <p>Ota rohkeasti yhteyttä projektien, yhteistyön tai kysymysten tiimoilta — lisätietoja saat viestimällä minulle LinkedInissä.</p>
     <div class="contact-links">
-      <a class="btn btn-primary" href="mailto:cemalbuchan@icloud.com">Lähetä sähköpostia</a>
+      <a class="btn btn-primary" id="email-btn" href="mailto:cemalbuchan@icloud.com">Lähetä sähköpostia</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/cemal-buchan-1472063b7/" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </div>
 </section>
 
 <footer>© 2026 Cemal Buchan — Helsinki, Suomi</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('email-btn');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var email = 'cemalbuchan@icloud.com';
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(email).then(function(){
+        var original = btn.textContent;
+        btn.textContent = 'Sähköposti kopioitu ✓';
+        setTimeout(function(){ btn.textContent = original; }, 2200);
+      });
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
