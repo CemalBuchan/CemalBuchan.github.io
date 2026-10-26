@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAST RAIL — Cemal Buchan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FCF2E5; --panel:#FFFBF4; --line:#DED2BC; --line-soft:#EDE4D2;
+    --text:#524646; --muted:#6D6260; --muted-dim:#A8A492; --orange:#EC5B38;
+    --teal:#2E6E6E; --teal-bg:#DCEAE9;
+    --mono:'JetBrains Mono', monospace; --disp:'Sora', sans-serif;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--bg); color:var(--text); font-family:var(--disp); line-height:1.65; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:820px; margin:0 auto; padding:0 32px; }
+  header.nav{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); background:rgba(82,70,70,0.94); border-bottom:1px solid #3D3434; }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; }
+  .logo{ font-family:var(--mono); font-size:13px; color:var(--bg); transition:color .2s ease; }
+  .logo:hover{ color:var(--orange); }
+  .logo span{ color:var(--muted-dim); }
+  .back{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); transition:color .2s ease; }
+  .back:hover{ color:var(--orange); }
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+  .lang-switch{ display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; }
+  .lang-switch a{ color:var(--muted-dim); transition:color .2s ease; }
+  .lang-switch a:hover{ color:var(--orange); }
+  .lang-switch a.active{ color:var(--bg); font-weight:700; }
+  .lang-switch span{ color:var(--muted-dim); }
+
+  .note-banner{ background:var(--teal-bg); border:1px solid var(--teal); border-radius:8px; padding:12px 16px; margin-top:24px; font-family:var(--mono); font-size:12.5px; color:var(--teal); }
+
+  .hero-banner{ padding-top:28px; }
+  .hero-banner .banner-frame{ width:100%; height:280px; background:var(--panel); border-radius:10px; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .hero-banner img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
+
+  .hero{ padding:20px 0 50px; }
+  .tag{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); letter-spacing:0.5px; margin-bottom:18px; display:block; }
+  h1{ font-family:var(--disp); font-weight:600; font-size:clamp(32px,5vw,46px); letter-spacing:-0.6px; margin-bottom:22px; color:var(--orange); }
+  .lead{ color:var(--muted); font-size:16px; max-width:600px; }
+
+  .stack{ display:flex; gap:8px; flex-wrap:wrap; margin:26px 0 30px; }
+  .chip{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--teal); background:var(--teal-bg); border:1px solid var(--teal); border-radius:20px; padding:5px 12px; }
+
+  .hero .btn{ font-family:var(--mono); font-size:12.5px; padding:12px 20px; border-radius:3px; display:inline-flex; align-items:center; gap:8px; transition:all .2s ease; border:1px solid var(--line); margin-bottom:60px; }
+  .hero .btn-primary{ background:var(--text); color:var(--bg); font-weight:600; border-color:var(--text); }
+  .hero .btn-primary:hover{ background:#3a352c; }
+
+  section.block{ border-top:1px solid var(--line); padding:50px 0; }
+  h2{ font-family:var(--disp); font-size:20px; font-weight:600; margin-bottom:22px; color:var(--orange); }
+  ul.feat{ list-style:none; }
+  ul.feat li{ font-family:var(--mono); font-size:13.5px; color:var(--muted); padding:14px 0; border-bottom:1px solid var(--line-soft); }
+  ul.feat li b{ color:var(--text); font-weight:500; }
+  .about p{ color:var(--muted); font-size:15px; margin-bottom:14px; max-width:640px; }
+
+  .gallery-note{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); margin-bottom:20px; }
+  .gallery-scroll{
+    display:flex; gap:14px; overflow-x:auto; overflow-y:hidden;
+    padding-bottom:10px; cursor:grab; scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color:var(--line) transparent;
+  }
+  .gallery-scroll.dragging{ cursor:grabbing; scroll-behavior:auto; }
+  .gallery-scroll::-webkit-scrollbar{ height:6px; }
+  .gallery-scroll::-webkit-scrollbar-track{ background:transparent; }
+  .gallery-scroll::-webkit-scrollbar-thumb{ background:var(--line); border-radius:3px; }
+  .gallery-item{ flex:0 0 auto; width:280px; height:190px; border-radius:6px; overflow:hidden; border:1px solid var(--line); background:var(--panel); }
+  .gallery-item img, .gallery-item video{ width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+
+  footer{ border-top:1px solid var(--line); padding:28px 0; font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); text-align:center; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../index.html">cemal<span>.buchan</span></a>
+    <div class="nav-right">
+      <a class="back" href="../index.html">← home</a>
+      <div class="lang-switch">
+        <a href="last-rail.html" class="active">EN</a><span>/</span><a href="../fi/Projects/last-rail.html">FI</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="wrap">
+    <div class="banner-frame">
+    <img src="media/last-rail/cover.jpg" alt="LAST RAIL cover image">
+    </div>
+  </div>
+</section>
+
+<section class="hero" style="padding-top:0;">
+  <div class="wrap">
+    <div class="note-banner">AI-assisted project — built with Claude Code as an experiment in how far AI can take a game from idea to near-release.</div>
+    <span class="tag" style="margin-top:22px;">Co-op Train Survival · Unity / C# · AI-Assisted Development</span>
+    <h1>LAST RAIL</h1>
+    <p class="lead">You and three friends keep a giant locomotive alive as it never stops moving. Speed depends on the coal you feed the boiler: burn too much and the pressure blows, burn too little and the zombies catch up. Fires, hull breaches, overheating axles and roguelike cards picked at every station keep all four players constantly depending on each other.</p>
+    <div class="stack">
+      <span class="chip">Unity</span>
+      <span class="chip">C#</span>
+      <span class="chip">AI-Assisted</span>
+      <span class="chip">Local Co-op</span>
+    </div>
+  </div>
+</section>
+
+<section class="block about">
+  <div class="wrap">
+    <h2>Overview</h2>
+    <p>LAST RAIL combines the panicked division of labour of Overcooked with train management and survival. It is played by 1–4 players on the same screen, and every player's job depends on the others': one carries coal while another puts out a fire, one seals a breach with planks, and one holds off enemies from behind a turret.</p>
+    <p>Over a run the train reaches a series of stations. At each one the crew votes on a card, buys ammo and coal from the shop, and carries upgrades to teammates. If the locomotive explodes or the whole crew goes down, the run is over. The project contains 189 scripts and roughly 31,000 lines of code.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>How this was built</h2>
+    <p style="color:var(--muted); font-size:15px; max-width:640px; margin-bottom:14px;">LAST RAIL is an experiment to test how powerful AI is: all of the code was written together with Claude Code. I set the game design, made the decisions and steered the direction. After a playtest with friends I had the train redesigned from scratch based on their feedback. The AI wrote the code and verified it with a playtest bot it built itself. My goal was to see how quickly, and how complete, a game could get with AI's help.</p>
+    <p style="color:var(--muted); font-size:15px; max-width:640px;">The result was better than I expected: the project went beyond a prototype. It is playable from start to finish — lobby, difficulty selection, a four-station run, a final stop and an end-of-run screen — and is close to a publishable state with only a little extra work. Character models come from the ithappy “Creative Characters” pack.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Gallery</h2>
+    <div class="gallery-note">Drag to scroll → · In-game UI is shown in Turkish</div>
+    <div class="gallery-scroll" id="gallery-scroll">
+      <div class="gallery-item"><img src="media/last-rail/cover.jpg" alt="Lobby"></div>
+      <div class="gallery-item"><img src="media/last-rail/loco-interior.jpg" alt="Walkable locomotive and wagon"></div>
+      <div class="gallery-item"><img src="media/last-rail/four-players.jpg" alt="Four players working the train"></div>
+      <div class="gallery-item"><img src="media/last-rail/horde-breach.jpg" alt="Zombie horde and a hull breach"></div>
+      <div class="gallery-item"><img src="media/last-rail/chaos-fire-revive.jpg" alt="Fire, a downed player and a horde warning"></div>
+      <div class="gallery-item"><img src="media/last-rail/card-draft.jpg" alt="Station card draft"></div>
+      <div class="gallery-item"><img src="media/last-rail/station-draft.jpg" alt="Station convoy and card vote"></div>
+      <div class="gallery-item"><img src="media/last-rail/run-end.jpg" alt="End-of-run screen"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Systems in the project</h2>
+    <ul class="feat">
+      <li><b>Boiler &amp; Speed System</b> — pressure, water, a finite coal stock and a 4-notch throttle. Pressure past the red line bursts a pipe and creates a steam leak, so speed is always traded against risk.</li>
+      <li><b>Minigame Task System</b> — shoveling coal (timing), nailing breaches shut (timing × hit count), sealing steam leaks (direction sequence) and putting out fires by hand (hold to mash). All driven by real gamepad input.</li>
+      <li><b>Damage &amp; Chaos Loop</b> — spreading fires (put out with a bucket), hull breaches that let zombies in (planks needed), overheating axles (oil can + sequence task) and reviving downed players.</li>
+      <li><b>Run Director</b> — waves with a calm / warning / horde rhythm, random events (water tower, loot crate, broken rail), 4 stations plus a final stop, a distance-based difficulty curve and scaling by player count.</li>
+      <li><b>Station Card Draft (Roguelike)</b> — each station offers 3 cards from a pool of 20+; the crew votes, and a card can be bought with gold. Modifiers reset every run.</li>
+      <li><b>Enemy Variety &amp; AI</b> — runner, spitter, exploder, giant zombie and charger, plus mounted and armed human enemies and station truck crews. A biome manager picks enemies and scenery per region.</li>
+      <li><b>Manned Turrets</b> — the player steps behind the gun and aims it; ammo crates, a shared ammo locker and card upgrades (damage, fire rate, pierce, auto-aim).</li>
+      <li><b>4-Player Input &amp; Interaction</b> — keyboard and gamepad input for four players at once, a system that scores the most sensible interaction target every frame, pings, and per-player carry indicators.</li>
+      <li><b>Procedural Content</b> — the locomotive, wagon interiors, sound effects and particle effects are generated in code; no audio files are used.</li>
+      <li><b>Night Vision &amp; Visual Layer</b> — night is fully dark with only the train and its surroundings visible; the pixel effect and zombie outline run on URP.</li>
+      <li><b>Automated Playtest Bot</b> — a bot that really plays the game through virtual gamepad input and verifies tasks, voting and the station flow, making the multiplayer flow testable on one machine.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>What I took away from this project</h2>
+    <p style="color:var(--muted); font-size:15px; max-width:640px;">This project showed me that the real work of building with AI is not writing code but describing exactly what you want, then testing the result and steering it. Our first playtest with friends was not fun, so I took the feedback and had the train redesigned to be compact, with shared tasks. I also learned how hard it is to design interconnected systems (coal → pressure → speed → enemies → damage → new tasks), and how valuable an automated test bot is for a multiplayer game.</p>
+  </div>
+</section>
+
+<footer>© 2026 Cemal Buchan — Helsinki, Finland</footer>
+
+<script>
+(function(){
+  var el = document.getElementById('gallery-scroll');
+  if(!el) return;
+  var isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', function(e){
+    isDown = true; el.classList.add('dragging');
+    startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+  });
+  window.addEventListener('mouseup', function(){ isDown = false; el.classList.remove('dragging'); });
+  el.addEventListener('mouseleave', function(){ isDown = false; el.classList.remove('dragging'); });
+  el.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - el.offsetLeft;
+    var walk = (x - startX) * 1.2;
+    el.scrollLeft = scrollLeft - walk;
+  });
+})();
+</script>
+
+</body>
+</html>

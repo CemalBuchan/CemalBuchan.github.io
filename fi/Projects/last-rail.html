@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAST RAIL — Cemal Buchan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FCF2E5; --panel:#FFFBF4; --line:#DED2BC; --line-soft:#EDE4D2;
+    --text:#524646; --muted:#6D6260; --muted-dim:#A8A492; --orange:#EC5B38;
+    --teal:#2E6E6E; --teal-bg:#DCEAE9;
+    --mono:'JetBrains Mono', monospace; --disp:'Sora', sans-serif;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:var(--bg); color:var(--text); font-family:var(--disp); line-height:1.65; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:820px; margin:0 auto; padding:0 32px; }
+  header.nav{ position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); background:rgba(82,70,70,0.94); border-bottom:1px solid #3D3434; }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; }
+  .logo{ font-family:var(--mono); font-size:13px; color:var(--bg); transition:color .2s ease; }
+  .logo:hover{ color:var(--orange); }
+  .logo span{ color:var(--muted-dim); }
+  .back{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); transition:color .2s ease; }
+  .back:hover{ color:var(--orange); }
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+  .lang-switch{ display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; }
+  .lang-switch a{ color:var(--muted-dim); transition:color .2s ease; }
+  .lang-switch a:hover{ color:var(--orange); }
+  .lang-switch a.active{ color:var(--bg); font-weight:700; }
+  .lang-switch span{ color:var(--muted-dim); }
+
+  .note-banner{ background:var(--teal-bg); border:1px solid var(--teal); border-radius:8px; padding:12px 16px; margin-top:24px; font-family:var(--mono); font-size:12.5px; color:var(--teal); }
+
+  .hero-banner{ padding-top:28px; }
+  .hero-banner .banner-frame{ width:100%; height:280px; background:var(--panel); border-radius:10px; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .hero-banner img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
+
+  .hero{ padding:20px 0 50px; }
+  .tag{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); letter-spacing:0.5px; margin-bottom:18px; display:block; }
+  h1{ font-family:var(--disp); font-weight:600; font-size:clamp(32px,5vw,46px); letter-spacing:-0.6px; margin-bottom:22px; color:var(--orange); }
+  .lead{ color:var(--muted); font-size:16px; max-width:600px; }
+
+  .stack{ display:flex; gap:8px; flex-wrap:wrap; margin:26px 0 30px; }
+  .chip{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--teal); background:var(--teal-bg); border:1px solid var(--teal); border-radius:20px; padding:5px 12px; }
+
+  .hero .btn{ font-family:var(--mono); font-size:12.5px; padding:12px 20px; border-radius:3px; display:inline-flex; align-items:center; gap:8px; transition:all .2s ease; border:1px solid var(--line); margin-bottom:60px; }
+  .hero .btn-primary{ background:var(--text); color:var(--bg); font-weight:600; border-color:var(--text); }
+  .hero .btn-primary:hover{ background:#3a352c; }
+
+  section.block{ border-top:1px solid var(--line); padding:50px 0; }
+  h2{ font-family:var(--disp); font-size:20px; font-weight:600; margin-bottom:22px; color:var(--orange); }
+  ul.feat{ list-style:none; }
+  ul.feat li{ font-family:var(--mono); font-size:13.5px; color:var(--muted); padding:14px 0; border-bottom:1px solid var(--line-soft); }
+  ul.feat li b{ color:var(--text); font-weight:500; }
+  .about p{ color:var(--muted); font-size:15px; margin-bottom:14px; max-width:640px; }
+
+  .gallery-note{ font-family:var(--mono); font-size:12px; color:var(--muted-dim); margin-bottom:20px; }
+  .gallery-scroll{
+    display:flex; gap:14px; overflow-x:auto; overflow-y:hidden;
+    padding-bottom:10px; cursor:grab; scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color:var(--line) transparent;
+  }
+  .gallery-scroll.dragging{ cursor:grabbing; scroll-behavior:auto; }
+  .gallery-scroll::-webkit-scrollbar{ height:6px; }
+  .gallery-scroll::-webkit-scrollbar-track{ background:transparent; }
+  .gallery-scroll::-webkit-scrollbar-thumb{ background:var(--line); border-radius:3px; }
+  .gallery-item{ flex:0 0 auto; width:280px; height:190px; border-radius:6px; overflow:hidden; border:1px solid var(--line); background:var(--panel); }
+  .gallery-item img, .gallery-item video{ width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+
+  footer{ border-top:1px solid var(--line); padding:28px 0; font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); text-align:center; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../../index.html">cemal<span>.buchan</span></a>
+    <div class="nav-right">
+      <a class="back" href="../../index.html">← etusivulle</a>
+      <div class="lang-switch">
+        <a href="../../Projects/last-rail.html">EN</a><span>/</span><a href="last-rail.html" class="active">FI</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="wrap">
+    <div class="banner-frame">
+    <img src="../../Projects/media/last-rail/cover.jpg" alt="LAST RAIL -kansikuva">
+    </div>
+  </div>
+</section>
+
+<section class="hero" style="padding-top:0;">
+  <div class="wrap">
+    <div class="note-banner">Tekoälyavusteinen projekti — tehty Claude Codella kokeiluna siitä, kuinka pitkälle tekoäly voi viedä pelin ideasta lähes julkaisukuntoon.</div>
+    <span class="tag" style="margin-top:22px;">Co-op-junaselviytyminen · Unity / C# · Tekoälyavusteinen kehitys</span>
+    <h1>LAST RAIL</h1>
+    <p class="lead">Sinä ja kolme ystävääsi pidätte hengissä jättimäistä veturia, joka ei koskaan pysähdy. Nopeus riippuu kattilaan syötetystä hiilestä: poltat liikaa, ja paine räjäyttää putken, poltat liian vähän, ja zombit saavuttavat junan. Tulipalot, vaunun repeämät, ylikuumenevat akselit ja jokaisella asemalla valittavat roguelike-kortit pitävät kaikki neljä pelaajaa jatkuvasti riippuvaisina toisistaan.</p>
+    <div class="stack">
+      <span class="chip">Unity</span>
+      <span class="chip">C#</span>
+      <span class="chip">Tekoälyavusteinen</span>
+      <span class="chip">Local Co-op</span>
+    </div>
+  </div>
+</section>
+
+<section class="block about">
+  <div class="wrap">
+    <h2>Yleiskatsaus</h2>
+    <p>LAST RAIL yhdistää Overcookedin paniikinomaisen työnjaon junanhallintaan ja selviytymiseen. Peliä pelataan 1–4 pelaajalla samalla ruudulla, ja jokaisen pelaajan työ riippuu muista: yksi kantaa hiiltä, toinen sammuttaa tulipaloa, kolmas paikkaa repeämän laudoilla ja neljäs pitää vihollisia loitolla tykkitornin takaa.</p>
+    <p>Matkan aikana juna saapuu asemille. Jokaisella asemalla miehistö äänestää kortin, ostaa kaupasta ammuksia ja hiiltä ja kantaa päivityksiä tiimikavereilleen. Jos veturi räjähtää tai koko miehistö kaatuu, matka päättyy. Projekti sisältää 189 skriptiä ja noin 31 000 riviä koodia.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Näin tämä tehtiin</h2>
+    <p style="color:var(--muted); font-size:15px; max-width:640px; margin-bottom:14px;">LAST RAIL on kokeilu tekoälyn voimasta: kaikki koodi kirjoitettiin yhdessä Claude Coden kanssa. Minä määrittelin pelisuunnittelun, tein päätökset ja ohjasin suuntaa. Ystävien kanssa tehdyn pelitestin jälkeen suunnittelutin junan kokonaan uudelleen heidän palautteensa perusteella. Tekoäly kirjoitti koodin ja varmisti sen toiminnan itse rakentamallaan testibotilla. Tavoitteeni oli nähdä, kuinka nopeasti ja kuinka valmiiksi peli voi tulla tekoälyn avulla.</p>
+    <p style="color:var(--muted); font-size:15px; max-width:640px;">Lopputulos oli odotettua parempi: projekti ylitti prototyypin tason. Sitä voi pelata alusta loppuun — aula, vaikeustason valinta, neljän aseman matka, päätösasema ja matkan päätösnäyttö — ja se on lähellä julkaisukuntoa pienellä lisätyöllä. Hahmomallit ovat ithappyn “Creative Characters” -paketista.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Galleria</h2>
+    <div class="gallery-note">Vieritä raahaamalla → · Pelin käyttöliittymä on turkiksi</div>
+    <div class="gallery-scroll" id="gallery-scroll">
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/cover.jpg" alt="Lobi"></div>
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/loco-interior.jpg" alt="Kävelykelpoinen veturi ja vaunu"></div>
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/four-players.jpg" alt="Neljä pelaajaa töissä junassa"></div>
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/horde-breach.jpg" alt="Zombilauma ja vaunun repeämä"></div>
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/chaos-fire-revive.jpg" alt="Tulipalo, kaatunut pelaaja ja laumavaroitus"></div>
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/card-draft.jpg" alt="Aseman korttivalinta"></div>
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/station-draft.jpg" alt="Asemakonvoi ja korttiäänestys"></div>
+      <div class="gallery-item"><img src="../../Projects/media/last-rail/run-end.jpg" alt="Matkan päätösnäyttö"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Projektin järjestelmät</h2>
+    <ul class="feat">
+      <li><b>Kattila- ja nopeusjärjestelmä</b> — paine, vesi, rajallinen hiilivarasto ja nelivaiheinen kaasuvipu. Punaisen rajan ylittävä paine räjäyttää putken ja aiheuttaa höyryvuodon, joten nopeutta vaihdetaan jatkuvasti riskiin.</li>
+      <li><b>Minipelipohjaiset tehtävät</b> — hiilen lapiointi (ajoitus), repeämien naulaus (ajoitus × iskumäärä), höyryvuotojen tukkiminen (suuntasarja) ja tulipalojen sammutus käsin (pohjassa pito). Kaikki toimivat oikealla ohjaimen syötteellä.</li>
+      <li><b>Vahinko- ja kaaossilmukka</b> — leviävät tulipalot (sammutus ämpärillä), vaunun repeämät, joista zombit pääsevät sisään (tarvitaan lautoja), ylikuumenevat akselit (öljykannu + sarjatehtävä) ja kaatuneiden pelaajien elvytys.</li>
+      <li><b>Run Director</b> — aallot rauhallinen / varoitus / lauma -rytmillä, satunnaiset tapahtumat (vesitorni, saalislaatikko, rikkinäinen raide), 4 asemaa ja päätösasema, etäisyyteen perustuva vaikeuskäyrä sekä pelaajamäärän mukainen skaalaus.</li>
+      <li><b>Aseman korttivalinta (roguelike)</b> — jokainen asema tarjoaa 3 korttia yli 20 kortin poolista; miehistö äänestää, ja kortin voi ostaa kullalla. Modifierit nollautuvat jokaisella matkalla.</li>
+      <li><b>Vihollisten monipuolisuus ja tekoäly</b> — juoksija, syljeskelijä, räjähtäjä, jättizombi ja ryntääjä sekä ratsastavat ja aseistetut ihmisviholliset ja aseman kuorma-automiehistöt. Biomi-hallinta valitsee viholliset ja maiseman alueen mukaan.</li>
+      <li><b>Miehitetyt tykkitornit</b> — pelaaja astuu aseen taakse ja tähtää sillä; ammuslaatikot, jaettu ammuskaappi ja korttipäivitykset (vahinko, tulinopeus, läpäisy, automaattitähtäys).</li>
+      <li><b>4 pelaajan syöte ja vuorovaikutus</b> — näppäimistön ja ohjaimen syöte neljälle pelaajalle yhtä aikaa, järjestelmä joka pisteyttää järkevimmän vuorovaikutuskohteen joka ruudunpäivityksellä, merkinnät (ping) ja pelaajakohtaiset kantoindikaattorit.</li>
+      <li><b>Proseduraalinen sisältö</b> — veturi, vaunujen sisätilat, äänitehosteet ja partikkelitehosteet tuotetaan koodilla; äänitiedostoja ei käytetä lainkaan.</li>
+      <li><b>Yönäkö ja visuaalinen kerros</b> — yö on täysin pimeä ja vain juna ja sen ympäristö näkyvät; pikselöintiefekti ja zombien ääriviiva toimivat URP:llä.</li>
+      <li><b>Automaattinen pelitestibotti</b> — botti, joka oikeasti pelaa peliä virtuaalisen ohjaimen syötteellä ja varmistaa tehtävien, äänestyksen ja asemakulun toiminnan, jolloin moninpelin kulkua voi testata yhdellä koneella.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2>Mitä opin tästä projektista</h2>
+    <p style="color:var(--muted); font-size:15px; max-width:640px;">Tämä projekti osoitti minulle, että tekoälyn kanssa rakentamisen todellinen työ ei ole koodin kirjoittamista vaan sen tarkka kuvaaminen, mitä haluaa, ja tuloksen testaaminen ja ohjaaminen. Ensimmäinen pelitestimme ystävien kanssa ei ollut hauska, joten otin palautteen vastaan ja suunnittelutin junan uudelleen kompaktiksi ja yhteisillä tehtävillä. Opin myös, kuinka vaikeaa on suunnitella toisiinsa kytkeytyviä järjestelmiä (hiili → paine → nopeus → viholliset → vahinko → uudet tehtävät) ja kuinka arvokas automaattinen testibotti on moninpelissä.</p>
+  </div>
+</section>
+
+<footer>© 2026 Cemal Buchan — Helsinki, Suomi</footer>
+
+<script>
+(function(){
+  var el = document.getElementById('gallery-scroll');
+  if(!el) return;
+  var isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', function(e){
+    isDown = true; el.classList.add('dragging');
+    startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+  });
+  window.addEventListener('mouseup', function(){ isDown = false; el.classList.remove('dragging'); });
+  el.addEventListener('mouseleave', function(){ isDown = false; el.classList.remove('dragging'); });
+  el.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var x = e.pageX - el.offsetLeft;
+    var walk = (x - startX) * 1.2;
+    el.scrollLeft = scrollLeft - walk;
+  });
+})();
+</script>
+
+</body>
+</html>
